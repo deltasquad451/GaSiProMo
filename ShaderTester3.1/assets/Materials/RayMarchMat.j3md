@@ -1,0 +1,37 @@
+MaterialDef Simple {
+    MaterialParameters {
+        Vector2 Mouse
+    }
+    Technique {
+        WorldParameters {
+            WorldViewProjectionMatrix
+            Resolution
+            Time
+        }
+        VertexShaderNodes {
+            ShaderNode CommonVert {
+                Definition : CommonVert : Common/MatDefs/ShaderNodes/Common/CommonVert.j3sn
+                InputMappings {
+                    worldViewProjectionMatrix = WorldParam.WorldViewProjectionMatrix
+                    modelPosition = Global.position.xyz
+                }
+                OutputMappings {
+                    Global.position = projPosition
+                }
+            }
+        }
+        FragmentShaderNodes {
+            ShaderNode RayMarchPrim {
+                Definition : RayMarchPrim : MatDefs/RayMarchPrim.j3sn
+                InputMappings {
+                    time = WorldParam.Time
+                    mouse = MatParam.Mouse
+                    resolution = WorldParam.Resolution
+                }
+                OutputMappings {
+                    Global.color = fragCoord
+                }
+            }
+        }
+    }
+}

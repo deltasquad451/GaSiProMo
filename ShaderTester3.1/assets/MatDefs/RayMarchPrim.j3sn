@@ -1,0 +1,23 @@
+ShaderNodeDefinitions{ 
+    ShaderNodeDefinition RayMarchPrim {      
+        Type: Fragment
+
+        Shader GLSL100: MatDefs/RayMarchPrim100.frag
+        
+        Documentation{
+                        
+            @input float time time in seconds
+            @input vec2 mouse mouse coords
+            @input vec2 resolution screen resolution
+            @output vec4 fragCoord output color
+        }
+        Input {
+            float time
+            vec2 mouse
+            vec2 resolution
+        }
+        Output {
+             vec4 fragCoord
+        }
+    }
+}
